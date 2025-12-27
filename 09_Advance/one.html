@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const requestUrl = 'Url'//url of the api
+    const xhr = new XMLHttpRequest()//to open request using xmlhttprequest we first need to create an object of this method using new keyword
+    xhr.open('GET','requestUrl');//after creating the object we need to open a request using .open() method which takes request type and api url as parameters
+    xhr.onreadystatechange = function () {// onreadystatechange is a request method which takes a function that will executes everytime the readystate of the request changes
+        console.log(xhr.readyState);//to check the state of the request made
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText) // api sometimes provides the response information in the form of string so we need to convert it in object type. // this keyword is used to define the context of responseText 
+            console.log(data.followers);
+        }
+        
+    }
+    xhr.send()//this method is used to send the request to the server
+</script>
+</html>
